@@ -24,8 +24,12 @@ spec:
             - name: config-volume
               mountPath: /app/src/main/resources/application.properties
       {{- end }}
+      
+      {{- if .Values.image.pullSecret }}
       imagePullSecrets:
         - name: {{ .Values.image.pullSecret }}
+      {{- end }}
+
       {{- if .Values.global.enabledComponents.configmap }}
       volumes:
         - name: config-volume

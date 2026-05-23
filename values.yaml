@@ -9,10 +9,10 @@ global:
 
 # Deployment
 image:
-  repository: "harbor.anphuc.site/shopnow/frontend"
-  tag: "v3"
+  repository: "AWS_ACCOUNT_ID.dkr.ecr.ap-southeast-3.amazonaws.com/shopnow-fe"
+  tag: "latest"
   pullPolicy: IfNotPresent
-  pullSecret: "shopnow-registry-secret" # Secret để pull image từ private registry
+  pullSecret: "" # Secret để pull image từ private registry
 
 replicaCount: 1
 rollingUpdate:
@@ -27,8 +27,9 @@ service:
 
 # Ingress (chỉ áp dụng nếu enabledComponents.ingress = true)
 ingress:
-  className: "nginx"
-  host: "shopnow.anphuc.site"
+  className: "alb"
+  host: "shopnow.com"
+  acmArn: ""
   path: "/"
   pathType: Prefix
 
