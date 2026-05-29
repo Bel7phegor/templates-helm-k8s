@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ inclued "template.project.configmapName" . }}
+  name: {{ include "template-project.configmapName" . }}
   namespace: {{ .Values.global.namespace }}
 data:
   {{- toYaml .Values.configmap.data | nindent 2 }}

@@ -69,6 +69,10 @@ Create the name of the service account to use
 {{- printf "%s-service" (include "template-project.fullname" .) | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
+{{- define "template-project.ingressName" -}}
+{{- printf "%s-ingress" (include "template-project.fullname" .) | trunc 63 | trimSuffix "-" -}}
+{{- end -}}
+
 {{- define "template-project.hpaName" -}}
 {{- printf "%s-hpa" (include "template-project.fullname" .) | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
