@@ -1,6 +1,6 @@
 # Global settings
 global:
-  appName: "shopnow-fe"       # Tên ứng dụng mặc định
+  appName: "shopnow-frontend"       # Tên ứng dụng mặc định
   namespace: "shopnow"        # Namespace mặc định
   enabledComponents:
     secrets: false
@@ -8,6 +8,16 @@ global:
     service: true             # Bật/tắt Service
     ingress: true             # Bật/tắt Ingress
 
+nameOverride: ""
+fullnameOverride: ""
+
+resources:
+  requests:
+    cpu: "100m"
+    memory: "128Mi"
+  limits:
+    cpu: "500m"
+    memory: "512Mi"
 # Deployment
 image:
   repository: "AWS_ACCOUNT_ID.dkr.ecr.ap-southeast-3.amazonaws.com/shopnow-fe"
@@ -16,7 +26,7 @@ image:
   pullSecret: "" # Secret để pull image từ private registry
 
 autoscaling:
-  enabled: true       # Bật HPA
+  enabled: true       # Bật HPA 
   minReplicas: 1
   maxReplicas: 5
   targetCPUUtilizationPercentage: 80
